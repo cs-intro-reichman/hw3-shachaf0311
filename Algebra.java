@@ -25,18 +25,37 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		for(int c=0; c<x2; c++)
+		if (x2 < 0)
 		{
-			x1++;
+			for(int c=0; c>x2; c--)
+		{
+			x1--;
+		}
+		}
+		else{
+			for(int c=0; c<x2; c++)
+			{
+				x1++;
+			}
 		}
 		return x1;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		for(int c=0; c<x2; c++)
+		if (x2 < 0)
 		{
-			x1--;
+			for(int c=0; c>x2; c--)
+		{
+			x1++;
+		}
+		}
+		else
+		{
+			for(int c=0; c<x2; c++)
+			{
+				x1--;
+			}
 		}
 		return x1;
 	}
@@ -44,6 +63,11 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int newv = 0;
+		if (x2 < 0)
+		{
+			x1 = minus(0,x1);
+			x2 = minus(0,x2);
+		}
 		for(int c=0; c<x2; c++)
 		{
 			newv = plus(newv,x1);
@@ -68,6 +92,31 @@ public class Algebra {
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
 		int div = 0;
+		if (x2 <0 && x1 <0)
+		{
+			x1 = minus(0,x1);
+			x2 = minus(0,x2);
+		}
+		else if (x2 <0)
+		{
+			x2 = minus(0,x2);
+			while (x1>=x2)
+			{
+				x1 = minus(x1,x2);
+				div --;
+			}
+			return div;
+		}
+		else if (x1 <0)
+		{
+			x1 = minus(0,x1);
+			while (x1>=x2)
+			{
+				x1 = minus(x1,x2);
+				div --;
+			}
+			return div;
+		}
 		while (x1>=x2)
 		{
 			x1 = minus(x1,x2);
