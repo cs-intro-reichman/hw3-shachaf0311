@@ -29,42 +29,24 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		String s1 = preProcess(str1);
-		String s1_extra_proccesed = "";
-		for (int i = 0; i < s1.length(); i++) 		
-		{
-			char ch = s1.charAt(i);
-			if (Character.isLetter(ch)) 
-			{
-				s1_extra_proccesed += Character.toLowerCase(ch);
-			}
-		}
-		String s2 = preProcess(str2);
-		String s2_extra_proccesed = "";
-		for (int i = 0; i < s2.length(); i++) 		
-		{
-			char ch = s2.charAt(i);
-			if (Character.isLetter(ch)) 
-			{
-				s2_extra_proccesed += Character.toLowerCase(ch);
-			}
-		}
-		if (s1_extra_proccesed.length() != s2_extra_proccesed.length())
+		str1 = preProcess(str1);
+		str2 = preProcess(str2);
+		if (str1.length() != str2.length())
 		{
 			return false;
 		}
-		for (int i = 0; i < s1_extra_proccesed.length(); i++)
+		for (int i = 0; i < str1.length(); i++)
 		{
-			char ch = s1_extra_proccesed.charAt(i);
+			char ch = str1.charAt(i);
 			int count1 = 0;
 			int count2 = 0;
-			for (int j = 0; j < s1_extra_proccesed.length(); j++)
+			for (int j = 0; j < str1.length(); j++)
 			{
-				if (s1_extra_proccesed.charAt(j) == ch)
+				if (str1.charAt(j) == ch)
 				{
 					count1++;
 				}
-				if (s2_extra_proccesed.charAt(j) == ch)
+				if (str2.charAt(j) == ch)
 				{
 					count2++;
 				}
@@ -86,7 +68,7 @@ public class Anagram {
 		for (int i = 0; i < str.length(); i++) 		
 		{
 			char ch = str.charAt(i);
-			if (Character.isLetter(ch) || ch == ' ') 
+			if (Character.isLetter(ch)) 
 			{
 				result += Character.toLowerCase(ch);
 			}
