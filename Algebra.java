@@ -25,43 +25,130 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		if (x2 < 0)
+		{
+			for(int c=0; c>x2; c--)
+		{
+			x1--;
+		}
+		}
+		else{
+			for(int c=0; c<x2; c++)
+			{
+				x1++;
+			}
+		}
+		return x1;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		if (x2 < 0)
+		{
+			for(int c=0; c>x2; c--)
+		{
+			x1++;
+		}
+		}
+		else
+		{
+			for(int c=0; c<x2; c++)
+			{
+				x1--;
+			}
+		}
+		return x1;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int newv = 0;
+		if (x2 < 0)
+		{
+			x1 = minus(0,x1);
+			x2 = minus(0,x2);
+		}
+		for(int c=0; c<x2; c++)
+		{
+			newv = plus(newv,x1);
+		}
+		return newv;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		if (n == 0)
+		{
+			return 1;
+		}
+		int newv = 1;
+		for(int c=0; c<n; c++)
+		{
+			newv = times(newv,x);
+		}
+		return newv;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int div = 0;
+		if (x2 <0 && x1 <0)
+		{
+			x1 = minus(0,x1);
+			x2 = minus(0,x2);
+		}
+		else if (x2 <0)
+		{
+			x2 = minus(0,x2);
+			while (x1>=x2)
+			{
+				x1 = minus(x1,x2);
+				div --;
+			}
+			return div;
+		}
+		else if (x1 <0)
+		{
+			x1 = minus(0,x1);
+			while (x1>=x2)
+			{
+				x1 = minus(x1,x2);
+				div --;
+			}
+			return div;
+		}
+		while (x1>=x2)
+		{
+			x1 = minus(x1,x2);
+			div ++;
+		}
+		return div;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int div1 = div(x1,x2);
+		int x2v = times(x2,div1);
+		int modu = minus(x1,x2v);
+		return modu;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
+		int v = 1;
+		while (true)
+		{
+			int v2 = times(v,v);
+			if (v2 == x)
+			{
+				return v;
+			}
+			else if (v2 > x)
+			{
+				return minus(v,1);
+			}
+			v ++;
+		}
+		
 	}	  	  
 }
